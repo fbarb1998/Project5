@@ -7,7 +7,7 @@ console.log(urlParams)
 const id = urlParams.get('id')
 
 console.log(id);
-// TODO use fetch to get product information for the id
+//  use fetch to get product information for the id
 fetch(`http://localhost:3000/api/products/${id}`)
     .then(data => {
         return data.json();
@@ -17,7 +17,7 @@ fetch(`http://localhost:3000/api/products/${id}`)
         insertProductDetails(product)
     });
 
-// TODO create function to insert product details into page
+// create function to insert product details into page
 function insertProductDetails(product) {
     console.log(product)
     document.querySelector(".item__img").innerHTML = `<img src="${product.imageUrl}" alt="${product.altTxt}">`
@@ -30,7 +30,7 @@ function insertProductDetails(product) {
     }
 
 }
-// TODO m7 add a click event listener function add to cart button
+//  m7 add a click event listener function add to cart button
 const addToCart = document.getElementById("addToCart")
 addToCart.addEventListener('click', () => {
 
@@ -38,13 +38,13 @@ addToCart.addEventListener('click', () => {
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
     const selectedColor = document.getElementById("colors").value
     const selectedQuantity = parseInt(document.getElementById("quantity").value)
-    // TODO find the id color and quantity that the user has selected
+    //  find the id color and quantity that the user has selected
 
 
-    // TODO if the product is not already added to the cart simply add it to the cart
+    // if the product is not already added to the cart simply add it to the cart
     let found = cart.find(item => item.id === id && item.color === selectedColor);
 
-    // TODO if the product and color is already in the cart simply increase the quantity
+    // if the product and color is already in the cart simply increase the quantity
     if (!found) {
         cart.push({
             color: selectedColor,
@@ -55,8 +55,8 @@ addToCart.addEventListener('click', () => {
         found.quantity += selectedQuantity;
     }
 
-    // TODO code the event listener function so it adds the product on the page to the cart in local storage
+    // code the event listener function so it adds the product on the page to the cart in local storage
     localStorage.setItem("cart", JSON.stringify(cart));
-    console.log("Item added to cart");
+    alert("Item added to cart");
     console.log(cart);
 });

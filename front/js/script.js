@@ -15,7 +15,7 @@ function insertProducts(products) {
     for (let i = 0; i < products.length; i++) {
         const product = products[i];
         console.log(product);
-        // TODO stick html product into the homepage
+        // stick html product into the homepage
         itemSection.innerHTML += `<a href="./product.html?id=${product._id}">
         <article>
           <img src="${product.imageUrl}" alt="${product.altTxt}">

@@ -233,6 +233,12 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
+// Function to clear the cart
+function clearCart() {
+    localStorage.removeItem("cart");
+    updateCartTotalQuantity(0);
+    updateCartTotalPrice([]);
+}
 // Step 1: Send POST Request to API
 function placeOrder(orderData) {
     fetch('http://localhost:3000/api/products/order', {
@@ -245,6 +251,8 @@ function placeOrder(orderData) {
         .then(response => response.json())
         .then(data => {
             const orderId = data.orderId;
+            // Clear cart and redirect
+            clearCart();
             redirectToConfirmationPage(orderId);
         })
         .catch(error => {
@@ -256,7 +264,7 @@ function placeOrder(orderData) {
 // Step 2: Redirect to Confirmation Page
 function redirectToConfirmationPage(orderId) {
     if (orderId) {
-    window.location.href = `confirmation.html?orderId=${orderId}`;
+        window.location.href = `confirmation.html?orderId=${orderId}`;
     } else {
         console.error("Order Id is undefined.")
     }
