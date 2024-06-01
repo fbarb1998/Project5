@@ -25,4 +25,4 @@ jobs:
         with:
           deploy_key: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./front
-          echo test, and deploy your project.
+          
